@@ -1,0 +1,10 @@
+# Source Directory
+
+Place your static website files here:
+- index.html
+- CSS files
+- JavaScript files  
+- Images and assets
+- Any other static content
+
+This directory will be analyzed and transformed into a full-stack Cloudflare application.

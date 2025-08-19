@@ -1,0 +1,15 @@
+1. How I want this to work is this: Give me a GitHub repo that you simply clone into a folder, and then you can work with Cursor or Cloud whatever, and they will use the CMS to build out the front-end. But first, I want like a wizard when you set up the CMS to generate a PRD (Product Requirements Document) for the website that we're going to make using another product called Gener8 with an 8 (not the forward). I came up with a lovable.dev clone.
+
+2. So basically, I have my Gener8 clone or my Lollapalp clone. I have it so it outputs the website in an Astro format that you can simply just make a repo and it'll sync to CloudFlare pages with basically zero issues. But what I want is to be able to just drop the repo that it creates into the folder in this repo into the front-end folder would be nice. And then the CMS can use AI to determine all of the editable fields which should be as follows: 
+    a. Header text (respect the <h1/h2/h3/h4/h5/h6> tags, option to edit what type in a dropdown menu)
+    b. Images (Optimized using Astro Images)
+    c. Paragraph Text
+    d. Lists
+    e. Whatever else that is content that can be edited using the CMS while still respecting the generated design and wireframe.
+
+3. During the CMS setup wizard, I want the user to be able to enter either their Anthropic key to use Claude with, or they can use their XAI key to use Grok 4 with. How that'll work is the CMS will use AI to run through every page that was generated and it will intelligently find the editable fields to create a page in the backend CMS. For each page, it will have the whole structure laid out that is editable in normal CMS text edit boxes, drop-downs, etc. The AI will intelligently create these fields in the backend CMS that we're building. There'll be a place where you can edit the content of the global header, a place where you can edit the content of the global footer, a place where you can edit the global colors, fonts, etc. I don't want the CMS to be too complicated but I want it to have automatic SEO injections that the user can edit on a per-page basis and a global basis as well. The CMS should also generate a site map. 
+
+4. The CMS should have a very lightweight, minimalistic, and intuitive feel. We want it to be fast, so there should be a UI element to the CMS that every time you hit save, it saves it immediately on the UI side of things. Then the processes get handled by a background agent-type layer. You can hit the save button and move to a different page. It will send it to the backend for processing, and when it's done, you get a notification in the bottom right in the notification area. Even if you migrate to a different page. I don't want the page to ever have to reload. You can go between pages. It'll load the content using Tailwind's skeleton system where it'll load the skeleton and then the skeleton won't display the content until the content is loaded.
+    - Here's the Tailwind CSS skeleton that I'm referring to. https://flowbite.com/docs/components/skeleton/
+
+5. 

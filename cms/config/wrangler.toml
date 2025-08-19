@@ -1,0 +1,37 @@
+name = "illumin8cms"
+compatibility_date = "2024-07-01"
+
+# -- Pages settings ----------------------------------------------------------
+pages_build_output_dir = "cms/admin/dist"
+
+# -- D1 (serverless SQLite) --------------------------------------------------
+[[d1_databases]]
+binding = "DB"                 # Available in env.DB
+database_name = "illumin8cms"
+database_id = "illumin8cms-local"  # Local development
+
+# -- R2 (uploads bucket) -----------------------------------------------------
+[[r2_buckets]]
+binding = "R2"                # Available in env.R2
+bucket_name = "illumin8cms-uploads"
+preview_bucket_name = "illumin8cms-uploads"
+
+# -- Vars & secrets ----------------------------------------------------------
+[vars]
+NODE_ENV = "development"
+JWT_SECRET = "dev-secret-key-change-in-production"
+
+[env.production]
+# Production environment settings
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "illumin8cms-production"
+database_id = "REPLACE_WITH_REAL_ID_AFTER_CREATION"
+
+[[env.production.r2_buckets]]
+binding = "R2"
+bucket_name = "illumin8cms-uploads-production"
+preview_bucket_name = "illumin8cms-uploads-production"
+
+[env.production.vars]
+NODE_ENV = "production" 

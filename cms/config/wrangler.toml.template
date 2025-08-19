@@ -1,0 +1,53 @@
+# Cloudflare deployment configuration for the edge-native version of Scenic Valley Quilts
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration
+
+name = "scenic-valley-quilts-edge"
+# main = "./functions/_noop.ts"  # Pages Functions auto-detect; this file is never called.
+compatibility_date = "2023-07-06"
+
+# -- Pages settings ----------------------------------------------------------
+# The path to the built frontend files
+# Note: This is handled by the deployment command, not wrangler.toml for Pages
+pages_build_output_dir = "frontend/dist"
+
+[env.production]
+# When you run `wrangler deploy --env production` these vars/ bindings are used.
+# Note: Pages projects don't support 'route' configuration - domains are managed via Pages dashboard
+
+# -- D1 (serverless SQLite) --------------------------------------------------
+[[env.production.d1_databases]]
+binding        = "DB"                 # Available in env.DB
+database_name  = "scenic-valley-quilts"
+# IMPORTANT: after you create the DB in the dashboard / wrangler, replace with real id.
+database_id = "4fe356d9-46fe-4726-918b-0737efd7269a"
+
+# -- R2 (uploads bucket) -----------------------------------------------------
+[[env.production.r2_buckets]]
+binding         = "R2"                # Available in env.R2
+bucket_name     = "quilts-uploads"
+preview_bucket_name = "quilts-uploads"
+
+# -- Vars & secrets ----------------------------------------------------------
+[env.production.vars]
+NODE_ENV = "production"
+
+# -- D1 (serverless SQLite) --------------------------------------------------
+[[d1_databases]]
+binding        = "DB"                 # Available in env.DB
+database_name  = "scenic-valley-quilts"
+# IMPORTANT: after you create the DB in the dashboard / wrangler, replace with real id.
+database_id = "4fe356d9-46fe-4726-918b-0737efd7269a"
+
+# -- R2 (uploads bucket) -----------------------------------------------------
+[[r2_buckets]]
+binding         = "R2"                # Available in env.R2
+bucket_name     = "quilts-uploads"
+preview_bucket_name = "quilts-uploads"
+
+# -- Vars & secrets ----------------------------------------------------------
+# Put non-secret values here or via dashboard UI
+[vars]
+NODE_ENV = "development"
+
+# Secrets (STRIPE_SECRET, JWT_SECRET, MAILCHANNELS_DOMAIN etc.) are added via:
+#   wrangler secret put STRIPE_SECRET 

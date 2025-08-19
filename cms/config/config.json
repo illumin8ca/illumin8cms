@@ -1,0 +1,79 @@
+{
+  "project": {
+    "name": "static-website",
+    "domain": "",
+    "description": "Static website deployed with Cloudflare Website Transformer",
+    "sourceDir": "./source",
+    "outputDir": "./source",
+    "productionBranch": "main",
+    "type": "business"
+  },
+  "scraping": {
+    "enabled": true,
+    "wordpressUrl": "",
+    "targetPages": [
+      "/",
+      "/about",
+      "/contact",
+      "/services"
+    ],
+    "downloadImages": true,
+    "downloadAssets": true,
+    "parseContent": true
+  },
+  "transformation": {
+    "enabled": true,
+    "detectImages": true,
+    "detectText": true,
+    "detectHeadings": true,
+    "detectParagraphs": true,
+    "detectButtons": true,
+    "detectForms": true,
+    "createAdminPanel": true,
+    "generateAPI": true,
+    "preserveLayout": true
+  },
+  "cloudflare": {
+    "services": {
+      "pages": true,
+      "d1": false,
+      "r2": false,
+      "access": false,
+      "dns": true
+    },
+    "d1": {
+      "databaseName": "website-db",
+      "schemaFile": "./database/schema.sql",
+      "seedFile": "./database/seed.sql"
+    },
+    "r2": {
+      "bucketName": "website-uploads"
+    },
+    "access": {
+      "adminPath": "/admin/*",
+      "adminEmails": []
+    }
+  },
+  "admin": {
+    "enabled": false,
+    "path": "/admin",
+    "authentication": false,
+    "contentEditing": false,
+    "imageManagement": false,
+    "ecommerce": false,
+    "analytics": false
+  },
+  "ecommerce": {
+    "enabled": false,
+    "stripe": false,
+    "inventory": false,
+    "orders": false,
+    "customers": false,
+    "shipping": false
+  },
+  "deployment": {
+    "autoCleanup": true,
+    "verbose": true,
+    "production": false
+  }
+}

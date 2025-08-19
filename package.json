@@ -1,0 +1,19 @@
+{
+  "name": "illumin8cms",
+  "version": "1.0.0",
+  "description": "A custom CMS designed to work strictly with Astro and Cloudflare Pages",
+  "main": "start.js",
+  "scripts": {
+    "start": "node start.js",
+    "reset-db": "node reset-db.js",
+    "migrate-totp": "node migrate-totp.js",
+    "install-deps": "cd cms/admin && npm install"
+  },
+  "dependencies": {
+    "better-sqlite3": "^9.2.2"
+  },
+  "devDependencies": {},
+  "keywords": ["cms", "astro", "cloudflare", "pages", "headless"],
+  "author": "Illumin8",
+  "license": "MIT"
+} 
